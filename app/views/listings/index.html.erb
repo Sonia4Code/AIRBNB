@@ -1,8 +1,13 @@
+<%= link_to "Listings", listings_path %>
+<%= link_to "New", new_listing_path %>
+
+
 <h1>Listings</h1>
 
-
-<%= link_to "Listings", listings_path(@listings) %>
-<%= link_to "New", new_listing_path(@listings) %>
+<% form_tag listings_path, :method => 'get' do %>
+    <%= text_field_tag :location %>
+    <%= submit_tag "Search" %>
+<% end %>
  
 <table>
   <tr>
@@ -18,6 +23,8 @@
     <td><%= listing.location %></td>
     <td><%= listing.property_type %></td>
     <td><%= listing.price %></td>
+    <td><%= link_to "View", listing %></td>
+    
   </tr>
 <% end %>
 </table>

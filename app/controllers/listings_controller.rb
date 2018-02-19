@@ -1,6 +1,12 @@
 class ListingsController < ApplicationController
+
+
 	def index
-		@listings = Listing.all
+		if params[:location]
+			@listings = Listing.where('location LIKE?', "%#{params[:location]}")
+		else
+			@listings = Listing.all
+		end
 	end
 
  	
@@ -8,18 +14,24 @@ class ListingsController < ApplicationController
  		@listings = Listing.new(listing_params)
  			if @listings.save
  				redirect_to @listings
- 			else
- 			render 
  			end
  	end
 
+ 	def new 
+
+ 		render template: "listings/new"
+
+ 	end 
+
  	def show
+
  		@listings = Listing.find(params[:id])
+ 		id = params[:id]
  	end
 
  	def edit
- 		# id = params[:id]
-	  #   @listings = Listing.find(id)
+ 		id = params[:id]
+	    @listings = Listing.find(id)
  	end
 
 def update
@@ -38,6 +50,8 @@ def update
 	    @listings.destroy
 	    redirect_to "/listings"
 	end
+
+	private
 
 	def listing_params
  		params.require(:listing).permit(:id, :location, :property_type, :price)

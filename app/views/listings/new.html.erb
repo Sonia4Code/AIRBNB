@@ -1,11 +1,11 @@
-
 <%= link_to "Listings", listings_path(@listings) %>
 <%= link_to "New", new_listing_path(@listings) %>
-</br>
 
 Create New Listing
 
  <%= form_for Listing.new do |f| %>
+
+
   </p>
   <%= f.label :location %><br>
   <%= f.text_field :location %>
@@ -18,9 +18,12 @@ Create New Listing
   <%= f.label :price %><br>
   <%= f.text_field :price %>
   </p>
-  <p>
-  	<%= f.submit %>
+
+
+<!-- <#= render partial: '/listings/form', object: f %> -->
+
+<p>
+    <%= f.submit %>
   </p>
 
- <%end %>
-
+ <% end %>

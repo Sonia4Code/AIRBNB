@@ -1,6 +1,9 @@
 <%= link_to "Listings", listings_path(@listings) %>
 <%= link_to "New", new_listing_path(@listings) %>
 
+<%= link_to 'Back', :back %>
+<%= link_to 'Index',listings_path(@listings)%>
+
 <h1>Show Listing</h1>
  
 <table>
@@ -21,6 +24,7 @@
   </tr>
 
 </table>
+
 
 
 
