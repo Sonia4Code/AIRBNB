@@ -2,11 +2,12 @@ class ListingsController < ApplicationController
 
 
 	def index
-		if params[:location]
-			@listings = Listing.where('location LIKE?', "%#{params[:location]}")
-		else
-			@listings = Listing.all
-		end
+		@listings = Listing.all
+		filtering_params(params).each do |key, value|
+			
+		   @listings = @listings.public_send(key, value) if value.present?
+		  
+      	end
 	end
 
  	
@@ -50,11 +51,25 @@ def update
 	    @listings.destroy
 	    redirect_to "/listings"
 	end
+  	
+  	def search
+	  #store all the listings that match the location searched
+	  @listings = Listing.where("location LIKE ? ", "%#{params[:location]}%")  
+
+	   render template:"listings/search"
+
+	end
+
 
 	private
 
 	def listing_params
- 		params.require(:listing).permit(:id, :location, :property_type, :price)
+ 		params.require(:listing).permit(:id, :location, :property_type, :price, 
+ 			:title, :description, :guests, :living_space, amenities: [])
+ 	end
+
+ 	def filtering_params(params)
+ 		params.slice(:guests, :location, :property_type)
  	end
 
 end

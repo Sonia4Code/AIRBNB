@@ -1,28 +1,38 @@
 <%= link_to "Listings", listings_path %>
 <%= link_to "New", new_listing_path %>
+<%= link_to 'Back', :back %>
 
 
 <h1>Listings</h1>
 
-<% form_tag listings_path, :method => 'get' do %>
-    <%= text_field_tag :location %>
-    <%= submit_tag "Search" %>
+
+<%= form_tag listings_path, method: :get do %>
+  <%= number_field_tag :guests %>
+  <%= text_field_tag :location, params[:location] %>
+  <%= submit_tag "Search", name: nil %>
 <% end %>
+
+
  
 <table>
   <tr>
+    <th>Title</th>
     <th>Location</th>
     <th>Type</th>
     <th>Price</th>
-    <th></th>
     <th></th>
   </tr>
  
 <% @listings.each do |listing| %>
   <tr>
+    <td><%= listing.title %></td>
+    <td></td>
     <td><%= listing.location %></td>
+    <td></td>
     <td><%= listing.property_type %></td>
+    <td></td>
     <td><%= listing.price %></td>
+    <td></td>
     <td><%= link_to "View", listing %></td>
     
   </tr>

@@ -1,40 +1,75 @@
 <%= link_to "Listings", listings_path %>
 <%= link_to "New", new_listing_path %>
+<%= link_to 'Back', :back %>
+<br>
 
 Edit Listing
 
 <table>
   <tr>
+    <th>Title</th>
+    <th>Description</th>
     <th>Location</th>
     <th>Type</th>
+    <th>Living Space</th>
+    <th>Guests</th>
     <th>Price</th>
     <th></th>
     <th></th>
   </tr>
  
+
   <tr>
+    <td><%= @listings.title %></td>
+    <td></td>
+    <td><%= @listings.description %></td>
+    <td></td>
     <td><%= @listings.location %></td>
+    <td></td>
     <td><%= @listings.property_type %></td>
+    <td></td>    
+    <td><%= @listings.living_space %></td>
+    <td></td>
+    <td><%= @listings.guests %></td>
+    <td></td>
     <td><%= @listings.price %></td>
+   
   </tr>
+
 </table>
 
   
-  <%= form_for @listings do |f| %>
-  </p>
-  <%= f.label :location %><br>
-  <%= f.text_field :location %>
-  </p> 
-  <p>
-  <%= f.label :property_type %><br>
-  <%= f.text_field :property_type %>
-  </p>
-  <p>
-  <%= f.label :price %><br>
-  <%= f.text_field :price %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= form_for Listing.new do |f| %>
+    </p>
+         <div><%= f.label :title %></div>
+         <div><%= f.text_field :title %></div>
+    </p> 
+    </p>
+         <div><%= f.label :description %></div>
+         <div><%= f.text_field :description %></div>
+    </p> 
+    </p>
+         <div><%= f.label :location %></div>
+         <div><%= f.text_field :location %></div>
+    </p> 
+    <p>
+         <div><%= f.label :property_type %></div>
+         <div><%= f.select :property_type, options_for_select([["select one", ""], "House", "Apartment"])%></div>
+    </p>
+    <p>
+         <div><%= f.label :living_space %></div>
+         <div><%= f.select :living_space, options_for_select([["select one", ""], "Entire Place", "Private Room", "Shared Room"])%></div>
+    </p>
+         <div><%= f.label :guests %></div>
+         <div><%= f.select :guests, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
+    </p>
+    <p>
+         <div><%= f.label :price %></div>
+         <div><%= f.text_field :price %></div>
+    </p>
+    <p></p>
+         <div><%= f.label :amenities %></div>
+         <div><%= f.text_field :amenities %></div>
+    </p><%= f.submit %></p>
 
-    <% end %>s
+  <% end %>
