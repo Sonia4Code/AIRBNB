@@ -1,0 +1,44 @@
+<%= link_to "Listings", listings_path(@listings) %>
+<%= link_to "New", new_listing_path(@listings) %>
+
+Edit Listing
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+  <tr>
+    <td><%= @listings.location %></td>
+    <td><%= @listings.property_type %></td>
+    <td><%= @listings.price %></td>
+  </tr>
+</table>
+
+  
+  <%= form_for @listings do |f| %>
+  </p>
+  <%= f.label :location %><br>
+  <%= f.text_field :location %>
+  </p> 
+  <p>
+  <%= f.label :property_type %><br>
+  <%= f.text_field :property_type %>
+  </p>
+  <p>
+  <%= f.label :price %><br>
+  <%= f.text_field :price %>
+  </p>
+  <p>
+  	<%= f.submit %>
+  </p>
+
+    <% end %>
+
+
+    <%= link_to 'Delete', listing_path(@listings),
+            :confirm => 'Are you sure?', :method => :delete %>

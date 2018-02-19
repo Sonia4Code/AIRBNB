@@ -1,0 +1,32 @@
+<%= link_to "Listings", listings_path(@listings) %>
+<%= link_to "New", new_listing_path(@listings) %>
+
+<h1>Show Listing</h1>
+ 
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+
+  <tr>
+    <td><%= @listings.location %></td>
+    <td><%= @listings.property_type %></td>
+    <td><%= @listings.price %></td>
+   
+  </tr>
+
+</table>
+
+
+
+<%= link_to "Edit", edit_listing_path(@listings) %>
+
+<%= link_to 'Delete', listing_path(@listings),
+            :confirm => 'Are you sure?', :method => :delete %>
+
+

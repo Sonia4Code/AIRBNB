@@ -1,0 +1,27 @@
+<h1>Listings</h1>
+
+
+<%= link_to "Listings", listings_path(@listings) %>
+<%= link_to "New", new_listing_path(@listings) %>
+ 
+<table>
+  <tr>
+    <th>Location</th>
+    <th>Type</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+  </tr>
+ 
+<% @listings.each do |listing| %>
+  <tr>
+    <td><%= listing.location %></td>
+    <td><%= listing.property_type %></td>
+    <td><%= listing.price %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+
