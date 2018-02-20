@@ -2,7 +2,7 @@ require 'securerandom'
 class User < ApplicationRecord
   include Clearance::User
 
-  acts_as_booker
+
 
   has_many :authentications, dependent: :destroy
 
