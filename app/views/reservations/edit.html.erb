@@ -1,0 +1,18 @@
+<%= link_to "Listings", listings_path %>
+<%= link_to "New", new_listing_path %>
+<%= link_to 'Back', :back %>
+<br>
+
+Edit Listing
+
+<%= render '/listings/display' %>
+
+
+ <%= form_for @listings do |f| %>
+
+ <%= render partial: '/listings/form', :locals => {:f => f } %>
+
+  
+  <div><%= f.submit %></div>
+  
+ <% end %>

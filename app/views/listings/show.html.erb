@@ -7,6 +7,8 @@
 <%= render '/listings/display' %>
 
 
+<%= link_to "Reserve", new_reservation_path(@listings.id) %>
+
 <%= link_to "Edit", edit_listing_path(@listings) %>
 
 <%= link_to 'Delete', listing_path(@listings),

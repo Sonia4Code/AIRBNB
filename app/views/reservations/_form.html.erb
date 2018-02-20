@@ -1,0 +1,40 @@
+<!-- FORM FOR EDIT AND NEW -->
+
+
+  <div><%= f.label :title %></div>
+  <div><%= f.text_field :title %></div>
+   
+ 
+  <div><%= f.label :description %></div>
+  <div><%= f.text_field :description %></div>
+   
+  
+  <div><%= f.label :location %></div>
+  <div><%= f.text_field :location %></div>
+   
+  
+  <div><%= f.label :property_type %></div>
+  <div><%= f.select :property_type, options_for_select([["select one", ""], "House", "Apartment"])%></div>
+  
+  
+  <div><%= f.label :living_space %></div>
+  <div><%= f.select :living_space, options_for_select([["select one", ""], "Entire Place", "Private Room", "Shared Room"])%></div>
+  
+  <div><%= f.label :guests %></div>
+  <div><%= f.select :guests, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
+  
+  
+  <div><%= f.label :price %></div>
+  <div><%= f.text_field :price %></div>
+
+  <div><%= f.label :amenities %></div>
+  <div>Gym</div>
+  <div><%= f.check_box :amenities, {multiple: true}, "gym", nil %></div>
+  <div>AC</div>
+  <div><%= f.check_box :amenities, {multiple: true}, "AC", nil %></div>
+  <div>Wifi</div>
+  <div><%= f.check_box :amenities, {multiple: true}, "wifi", nil %></div>
+  <div>Washer</div>
+  <div><%= f.check_box :amenities, {multiple: true}, "washer", nil %></div>
+  <div>Dryer</div>
+  <div><%= f.check_box :amenities, {multiple: true}, "dryer", nil %></div>

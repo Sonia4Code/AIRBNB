@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "listings/search"
   
   resources :listings
+  resources :reservations
 
   resources :users, controller: "clearance/users", only: [:create] do
     resource :password,
