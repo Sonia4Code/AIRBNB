@@ -1,18 +1,50 @@
 <%= link_to "Listings", listings_path %>
-<%= link_to "New", new_listing_path %>
 <%= link_to 'Back', :back %>
 <br>
 
-Edit Listing
+THis is the Edit Booking Page
 
-<%= render '/listings/display' %>
+<table>
+  <tr>
+
+    <th>Total Amount</th>
+    <th>Guests</th>
+    <th>Check-in Date</th>
+    <th>Check-out Date</th>
+    
+    
+    <th></th>
+  </tr>
+ 
+
+  <tr>
+    <td><%= @reservations.total_price %></td>
+    <td></td>
+    <td><%= @reservations.guests %></td>
+    <td></td>
+    <td><%= @reservations.check_in %></td>
+    <td></td>
+    <td><%= @reservations.check_out %></td>
 
 
- <%= form_for @listings do |f| %>
 
- <%= render partial: '/listings/form', :locals => {:f => f } %>
+     <%= form_for @reservations do |f| %>
 
+<div><%= f.label :total_price %></div>
+  <div><%= f.text_field :total_price %></div>
+   
+ 
+  <div><%= f.label :Check_in %></div>
+  <div><%= f.text_field :check_in %></div>
+   
+  <div><%= f.label :Check_out %></div>
+  <div><%= f.text_field :check_out %></div>
   
+ 
+  <div><%= f.label :guests %></div>
+  <div><%= f.select :guests, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
+
+
   <div><%= f.submit %></div>
   
  <% end %>

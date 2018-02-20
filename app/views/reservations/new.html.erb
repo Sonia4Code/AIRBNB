@@ -2,7 +2,28 @@
 <%= link_to "New", new_listing_path %>
 <%= link_to 'Back', :back %>
 
-Reservation Page
+New Reservation Page
 
 
 <%= render "/listings/display" %>
+
+ <%= form_for @reservation do |f| %>
+
+<div><%= f.label :total_price %></div>
+  <div><%= f.text_field :total_price %></div>
+   
+ 
+  <div><%= f.label :Check_in %></div>
+  <div><%= f.text_field :check_in %></div>
+   
+  <div><%= f.label :Check_out %></div>
+  <div><%= f.text_field :check_out %></div>
+  
+ 
+  <div><%= f.label :guests %></div>
+  <div><%= f.select :guests, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
+
+
+  <div><%= f.submit %></div>
+  
+ <% end %>
