@@ -19,15 +19,16 @@ class ListingsController < ApplicationController
  	end
 
  	def new 
-
+ 		@listing = Listing.new
  		render template: "listings/new"
 
  	end 
 
  	def show
-
- 		@listings = Listing.find(params[:id])
  		id = params[:id]
+ 		@listings = Listing.find(params[:id])
+
+
  	end
 
  	def edit

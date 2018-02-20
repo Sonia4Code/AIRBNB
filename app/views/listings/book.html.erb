@@ -1,0 +1,13 @@
+Booking Page
+
+<% form_tag "/listings/#{current_listing.id}/book", method => post do %>
+	<p>
+		Check-in date:
+		<%= date_field_tag 'start_date' %>
+	</p>
+
+	<p>
+		Check-out date:
+		<%= date_field_tag 'start_date' %>
+	</p>
+	<% end %>

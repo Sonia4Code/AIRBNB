@@ -25,7 +25,7 @@
  
 <% @listings.each do |listing| %>
   <tr>
-    <td><%= listing.title %></td>
+    <td><%= link_to listing.title ,listing_path(listing) %></td>
     <td></td>
     <td><%= listing.location %></td>
     <td></td>
@@ -33,7 +33,7 @@
     <td></td>
     <td><%= listing.price %></td>
     <td></td>
-    <td><%= link_to "View", listing %></td>
+    <!-- <td><#%= link_to "View", listing %></td> -->
     
   </tr>
 <% end %>
