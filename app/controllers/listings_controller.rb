@@ -3,11 +3,9 @@ class ListingsController < ApplicationController
 
 	def index
 		@listings = Listing.all
-		filtering_params(params).each do |key, value|
-			
-		   @listings = @listings.public_send(key, value) if value.present?
-		  
-      	end
+  		filtering_params(params).each do |key, value|
+  	  @listings = @listings.public_send(key, value) if value.present?
+  	  end
 	end
 
  	
@@ -24,11 +22,9 @@ class ListingsController < ApplicationController
 
  	end 
 
- 	def show
+  	def show
  		id = params[:id]
  		@listing = Listing.find(params[:id])
-
-
  	end
 
  	def edit
@@ -43,29 +39,35 @@ def update
     else
       render :edit
     end
+end
 
-    end
-
- 	def destroy
+  	def destroy
 	    id = params[:id]
 	    @listing = Listing.find(id)
 	    @listing.destroy
 	    redirect_to "/listings"
-	end
+	 end
   	
   	def search
 	  #store all the listings that match the location searched
 	  @listing = Listing.where("location LIKE ? ", "%#{params[:location]}%")  
 
 	   render template:"listings/search"
-
 	end
 
+    def verify
+      @user = user.find(params[:id])
+ #      # authorization code
+      if user.role == "customer" || "superadmin"
+        flash[:notice] = "Sorry. You are not allowed to perform this action."
+        return redirect_to some_other_url, notice: "Sorry. You do not have the permissino to verify a property."
+      end
+    end
 
 	private
 
 	def listing_params
- 		params.require(:listing).permit(:id, :location, :property_type, :price, 
+ 		params.require(:listing).permit(:id, :role, :location, :property_type, :price, 
  			:title, :description, :guests, :living_space, amenities: [])
  	end
 
@@ -74,3 +76,10 @@ def update
  	end
 
 end
+
+
+ 
+
+
+
+
