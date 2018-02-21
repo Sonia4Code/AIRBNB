@@ -18,19 +18,17 @@ THis is the Edit Booking Page
  
 
   <tr>
-    <td><%= @reservations.total_price %></td>
+    <td><%= @reservation.total_price %></td>
     <td></td>
-    <td><%= @reservations.guests %></td>
+    <td><%= @reservation.guests %></td>
     <td></td>
-    <td><%= @reservations.check_in %></td>
+    <td><%= @reservation.check_in %></td>
     <td></td>
-    <td><%= @reservations.check_out %></td>
+    <td><%= @reservation.check_out %></td>
 
 
-
-     <%= form_for @reservations do |f| %>
-
-<div><%= f.label :total_price %></div>
+<%= form_for [@listing,@reservation] do |f| %>  
+  <div><%= f.label :total_price %></div>
   <div><%= f.text_field :total_price %></div>
    
  
@@ -46,5 +44,4 @@ THis is the Edit Booking Page
 
 
   <div><%= f.submit %></div>
-  
- <% end %>
+<% end %>

@@ -1,40 +1,46 @@
 class ReservationsController < ApplicationController
 
-  def new
-    @listings = Listing.find(params[:format])
-
-    @reservation = Reservation.new
-  end
 
   def index
     @reservations = Reservation.all
+
+    
     # filtering_params(params).each do |key, value|
       
-    #    @reservations = @reservations.public_send(key, value) if value.present?
+    #    @listings = @listings.public_send(key, value) if value.present?
   end
 
-    def show
-      
-      @reservations = Reservation.find(params[:id])
-    end
+  def new
+    @listing = Listing.find(params[:listing_id])
+
+    @reservation = Reservation.new
+    
+  end
 
   def create
-    @reservations = Reservation.new(reservation_params)
-      if @reservations.save
-        redirect_to @reservations
-      end
+    @listing = Listing.find(params[:listing_id])
+    @reservation = @listing.reservations.new(reservation_params)
+    if @reservation.save
+      redirect_to listing_reservation_path(@listing, @reservation)
+    end
   end
 
+ def show 
+     @listing = Listing.find(params[:listing_id])
+     @reservation = Reservation.find(params[:id])
+ end
+
   def edit
-    id = params[:id]
-      @reservations = Reservation.find(id)
+     @listing = Listing.find(params[:listing_id])
+     @reservation = Reservation.find(params[:id])
   end
 
 
   def update
-    @reservations = Reservation.find(params[:id])
-    if @reservations.update(reservation_params)
-      redirect_to reservation_path
+     @listing = Listing.find(params[:listing_id])
+     @reservation = Reservation.find(params[:id])
+    if @listing.reservation.update(reservation_params)
+      redirect_to listing_reservation_path(@listing, @reservation)
     else
       render :edit
     end
@@ -42,16 +48,16 @@ class ReservationsController < ApplicationController
     end
 
   def destroy
-      id = params[:id]
-      @reservations = Reservations.find(id)
-      @reservations.destroy
-      redirect_to "/reservations"
+      @listing = Listing.find(params[:listing_id])
+      @reservation = Reservation.find(params[:id])
+      @reservation.destroy
+      redirect_to listing_reservations_path
   end
 
 private
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :guest_id, :total_price, :check_in, 
+    params.require(:reservation).permit(:user_id, :listing_id, :total_price, :check_in, 
       :check_out, :guests )
   end
 

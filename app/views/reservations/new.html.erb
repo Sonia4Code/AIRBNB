@@ -7,8 +7,7 @@ New Reservation Page
 
 <%= render "/listings/display" %>
 
- <%= form_for @reservation do |f| %>
-
+ <%= form_for [@listing,@reservation] do |f| %>  
 <div><%= f.label :total_price %></div>
   <div><%= f.text_field :total_price %></div>
    
@@ -25,5 +24,4 @@ New Reservation Page
 
 
   <div><%= f.submit %></div>
-  
- <% end %>
+   <% end %>

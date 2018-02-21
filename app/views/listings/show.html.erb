@@ -7,11 +7,11 @@
 <%= render '/listings/display' %>
 
 
-<%= link_to "Reserve", new_reservation_path(@listings.id) %>
+<%= link_to "Reserve", new_listing_reservation_path(@listing.id) %>
 
-<%= link_to "Edit", edit_listing_path(@listings) %>
+<%= link_to "Edit", edit_listing_path(@listing) %>
 
-<%= link_to 'Delete', listing_path(@listings),
+<%= link_to 'Delete', listing_path(@listing),
             :confirm => 'Are you sure?', :method => :delete %>
 
 

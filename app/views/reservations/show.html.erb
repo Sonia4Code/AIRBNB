@@ -18,20 +18,20 @@ Congrats, your reservation is successful
  
 
   <tr>
-    <td><%= @reservations.total_price %></td>
+    <td><%= @reservation.total_price %></td>
     <td></td>
-    <td><%= @reservations.guests %></td>
+    <td><%= @reservation.guests %></td>
     <td></td>
-    <td><%= @reservations.check_in %></td>
+    <td><%= @reservation.check_in %></td>
     <td></td>
-    <td><%= @reservations.check_out %></td>
+    <td><%= @reservation.check_out %></td>
     
    
   </tr>
 
 </table>
 
-<%= link_to "Edit", edit_reservation_path(@reservations) %>
+<%= link_to "Edit", edit_listing_reservation_path(@reservation) %>
 
-<%= link_to 'Delete', reservation_path(@reservations),
+<%= link_to 'Delete', listing_reservation_path(@reservation),
             :confirm => 'Are you sure?', :method => :delete %>

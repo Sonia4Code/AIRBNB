@@ -12,8 +12,8 @@ class ListingsController < ApplicationController
 
  	
  	def create
- 		@listings = Listing.new(listing_params)
- 			if @listings.save
+ 		@listing = Listing.new(listing_params)
+ 			if @listing.save
  				redirect_to @listings
  			end
  	end
@@ -26,19 +26,19 @@ class ListingsController < ApplicationController
 
  	def show
  		id = params[:id]
- 		@listings = Listing.find(params[:id])
+ 		@listing = Listing.find(params[:id])
 
 
  	end
 
  	def edit
  		id = params[:id]
-	    @listings = Listing.find(id)
+	    @listing = Listing.find(id)
  	end
 
 def update
-    @listings = Listing.find(params[:id])
-    if @listings.update(listing_params)
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
       redirect_to listings_path
     else
       render :edit
@@ -48,14 +48,14 @@ def update
 
  	def destroy
 	    id = params[:id]
-	    @listings = Listing.find(id)
-	    @listings.destroy
+	    @listing = Listing.find(id)
+	    @listing.destroy
 	    redirect_to "/listings"
 	end
   	
   	def search
 	  #store all the listings that match the location searched
-	  @listings = Listing.where("location LIKE ? ", "%#{params[:location]}%")  
+	  @listing = Listing.where("location LIKE ? ", "%#{params[:location]}%")  
 
 	   render template:"listings/search"
 
