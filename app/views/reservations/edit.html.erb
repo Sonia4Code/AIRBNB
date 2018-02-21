@@ -3,45 +3,45 @@
 <br>
 
 THis is the Edit Booking Page
-
+asdfad
 <table>
-  <tr>
-
-    <th>Total Amount</th>
-    <th>Guests</th>
+  <tr>  
+  
     <th>Check-in Date</th>
     <th>Check-out Date</th>
-    
+    <th>Guests</th>
+    <th>Total Amount</th>
     
     <th></th>
   </tr>
- 
-
-  <tr>
-    <td><%= @reservation.total_price %></td>
-    <td></td>
-    <td><%= @reservation.guests %></td>
-    <td></td>
+  <tr>    
+    
     <td><%= @reservation.check_in %></td>
     <td></td>
     <td><%= @reservation.check_out %></td>
+    <td></td>
+    <td><%= @reservation.guests %></td>
+    <td></td>
+    <td><%= @reservation.total_price %></td>
+   
+  </tr>
+</table>
 
 
-<%= form_for [@listing,@reservation] do |f| %>  
-  <div><%= f.label :total_price %></div>
-  <div><%= f.text_field :total_price %></div>
-   
- 
-  <div><%= f.label :Check_in %></div>
-  <div><%= f.text_field :check_in %></div>
-   
-  <div><%= f.label :Check_out %></div>
-  <div><%= f.text_field :check_out %></div>
-  
- 
+  <%= form_for [@listing,@reservation] do |f| %>    
+
   <div><%= f.label :guests %></div>
   <div><%= f.select :guests, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
 
+  <div><%= f.label :check_in %></div>
+  <div><%= f.date_field :check_in %></div>
+   
+  <div><%= f.label :check_out %></div>
+  <div><%= f.date_field :check_out %></div>
+
+  <div><%= f.label :total_amount %></div>
+  <div><%= f.number_field :total_price %></div>
+ 
 
   <div><%= f.submit %></div>
-<% end %>
+   <% end %>

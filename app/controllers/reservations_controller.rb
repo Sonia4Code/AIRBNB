@@ -37,27 +37,26 @@ class ReservationsController < ApplicationController
 
 
   def update
-     @listing = Listing.find(params[:listing_id])
      @reservation = Reservation.find(params[:id])
-    if @listing.reservation.update(reservation_params)
+     @listing = @reservation.listing
+    if @reservation.update(reservation_params)
       redirect_to listing_reservation_path(@listing, @reservation)
     else
       render :edit
     end
-
-    end
+  end
 
   def destroy
-      @listing = Listing.find(params[:listing_id])
       @reservation = Reservation.find(params[:id])
       @reservation.destroy
+
       redirect_to listing_reservations_path
   end
 
 private
 
   def reservation_params
-    params.require(:reservation).permit(:user_id, :listing_id, :total_price, :check_in, 
+    params.require(:reservation).permit(:id, :user_id, :listing_id, :total_price, :check_in, 
       :check_out, :guests )
   end
 
