@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214093937) do
+ActiveRecord::Schema.define(version: 20180220104024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acts_as_bookable_bookings", force: :cascade do |t|
+    t.string   "bookable_type"
+    t.integer  "bookable_id"
+    t.string   "booker_type"
+    t.integer  "booker_id"
+    t.integer  "amount"
+    t.text     "schedule"
+    t.datetime "time_start"
+    t.datetime "time_end"
+    t.datetime "time"
+    t.datetime "created_at"
+    t.index ["bookable_type", "bookable_id"], name: "index_acts_as_bookable_bookings_bookable", using: :btree
+    t.index ["booker_type", "booker_id"], name: "index_acts_as_bookable_bookings_booker", using: :btree
+  end
 
   create_table "authentications", force: :cascade do |t|
     t.string   "uid"
@@ -30,8 +45,26 @@ ActiveRecord::Schema.define(version: 20180214093937) do
     t.string   "location"
     t.string   "property_type"
     t.integer  "price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "title"
+    t.text     "description"
+    t.integer  "guests"
+    t.text     "living_space"
+    t.text     "amenities",     default: [],              array: true
+    t.text     "schedule"
+    t.boolean  "verification"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "listing_id"
+    t.integer  "guests"
+    t.integer  "total_price"
+    t.date     "check_in"
+    t.date     "check_out"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

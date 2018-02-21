@@ -1,40 +1,18 @@
 <%= link_to "Listings", listings_path %>
 <%= link_to "New", new_listing_path %>
+<%= link_to 'Back', :back %>
+<br>
 
 Edit Listing
 
-<table>
-  <tr>
-    <th>Location</th>
-    <th>Type</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-  </tr>
- 
-  <tr>
-    <td><%= @listings.location %></td>
-    <td><%= @listings.property_type %></td>
-    <td><%= @listings.price %></td>
-  </tr>
-</table>
+<%= render '/listings/display' %>
+
+
+ <%= form_for @listings do |f| %>
+
+ <%= render partial: '/listings/form', :locals => {:f => f } %>
 
   
-  <%= form_for @listings do |f| %>
-  </p>
-  <%= f.label :location %><br>
-  <%= f.text_field :location %>
-  </p> 
-  <p>
-  <%= f.label :property_type %><br>
-  <%= f.text_field :property_type %>
-  </p>
-  <p>
-  <%= f.label :price %><br>
-  <%= f.text_field :price %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-
-    <% end %>s
+  <div><%= f.submit %></div>
+  
+ <% end %>
