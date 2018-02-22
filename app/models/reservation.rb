@@ -12,5 +12,7 @@ class Reservation < ApplicationRecord
     self.total_price = calculate_date_difference * self.listing.price
   end
 
+  
+  
 
 end

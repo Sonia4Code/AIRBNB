@@ -1,20 +1,12 @@
 class UsersController < Clearance::UsersController
   
-	def user_from_params 
-		name = user_params.delete (:name)
-		email = user_params.delete (:email)
-		password = user_params.delete (:password)
+	def show  
+		@user = current_user
+		@listings = @user.listings
+    @my_reservations = current_user.reservations
+		# @reservations = @listings.reservations
+	end 
 
-
-		Clearance.configuration.user_model.new(user_params).tap do |user|
-			user.email = email
-			user.password = password
-		end
-	end
-
-	def user_params
-		params[Clearance.configuration.user_paramater] || Hash.new
-	end
 
 
 end

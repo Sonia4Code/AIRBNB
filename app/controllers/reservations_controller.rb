@@ -2,10 +2,13 @@ class ReservationsController < ApplicationController
 
 
   def index
+        # @reservation.user_id = current_user.id
         @listings = current_user.listings
+      
+
   end
 
-  def user_index
+  def user_inde
     @reservation = current_user.reservations
   end
 
@@ -18,6 +21,7 @@ class ReservationsController < ApplicationController
 
   def create
     @listing = Listing.find(params[:listing_id])
+
       @reservation = @listing.reservations.new(reservation_params)#.merge(user_id: current_user.id)
       @reservation.user_id = current_user.id
     if @reservation.save

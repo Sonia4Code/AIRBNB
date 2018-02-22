@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221063047) do
+ActiveRecord::Schema.define(version: 20180222023134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180221063047) do
     t.text     "amenities",     default: [],              array: true
     t.text     "schedule"
     t.boolean  "verification"
+    t.string   "avatar"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20180221063047) do
     t.string   "remember_token",     limit: 128,             null: false
     t.string   "name"
     t.integer  "roles",                          default: 0
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end

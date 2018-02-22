@@ -13,11 +13,16 @@ New Reservation Page
   <div><%= f.select :guests, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
 
   <div><%= f.label :check_in %></div>
-  <div><%= f.date_field :check_in %></div>
+  <div><%= f.text_field :check_in, class:"hehe" %></div>
    
   <div><%= f.label :check_out %></div>
-  <div><%= f.date_field :check_out %></div>
+  <div><%= f.text_field :check_out, class:"hehe" %></div>
 
  
   <div><%= f.submit %></div>
    <% end %>
+
+
+<script type="text/javascript">
+  flatpickr(".hehe");
+</script>

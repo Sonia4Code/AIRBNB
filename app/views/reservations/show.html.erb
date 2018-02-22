@@ -35,5 +35,6 @@ Congrats, your reservation is successful
 
 <%= link_to "Edit", edit_listing_reservation_path(@reservation) %>
 
-<%= link_to 'Delete', listing_reservation_path(@reservation),
-            :confirm => 'Are you sure?', :method => :delete %>
+<%= button_to "delete", listing_reservation_path(@reservation), :confirm => 'Are you sure?', :method => "delete" %>
+
+<!-- %= link_to 'Delete', listing_reservation_path(@reservation),:confirm => 'Are you sure?', :method => "delete" %>

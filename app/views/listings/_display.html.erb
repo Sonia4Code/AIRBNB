@@ -1,5 +1,8 @@
+
+
 <table>
     <tr>
+    <th></th>
     <th>Title</th>
     <th>Description</th>
     <th>Location</th>
@@ -10,6 +13,7 @@
     <th>Amenities</th>
     </tr>
     <tr>
+   <td><%= image_tag @listing.avatar.small.url if @listing.avatar? %> </td>  
    <td><%= @listing.title %></td>    
     <td><%= @listing.description %></td>    
     <td><%= @listing.location %></td>    
@@ -18,5 +22,6 @@
     <td><%= @listing.guests %></td>    
     <td><%= @listing.price %></td>   
     <td><%= @listing.amenities %></td>  
+    
     <tr> 
 </table>
