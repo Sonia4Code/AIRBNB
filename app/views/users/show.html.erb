@@ -1,0 +1,66 @@
+<h1>hello <%= @user.name %> </h1>
+
+
+<!-- <h3>your reservation at someone else's place </h3> -->
+
+<h2>My Properties </h2>
+
+<h3>Reservations: </h3>
+
+<table>
+    <tr>
+    <th>Location</th>
+    <th></th>
+    <th>Check-in Date</th>
+    <th></th>
+    <th>Check-out Date</th>
+    <th></th>
+    </tr>
+
+<% @listings.each do |l| %>
+  <tr> 
+  <th><%= l.location %></th>
+   <th></th>
+  <th><%= l.reservations.check_in if !l.reservations.empty? %></th>
+  <th></th>
+  <th><%= l.reservations.check_out if !l.reservations.empty? %></th> 
+  <th></th>
+  <tr> 
+  <% end  %>      
+  </table>
+
+
+<br>
+<br>
+<br>
+
+<h3>My Trips</h3>
+<h3>Reservations: </h3>
+
+<table>
+    <tr>
+    <th></th>
+    <th>Location</th>
+    <th></th>
+    <th>Check-in Date</th>
+    <th></th>
+    <th>Check-out Date</th>
+    <th></th>
+    <th>View Listing</th>
+    <th></th>
+    </tr>
+    
+    <% @my_reservations.each do |r| %> 
+    <tr>
+    <td><%= r.listing.location if !r.listing.nil? %></td>
+    <th></th>
+    <td><%= r.check_in %></td>
+    <th></th>
+    <td><%= r.check_out %></td>
+     <th></th>
+    <!-- <td><%#= link_to "View" ,listing_reservations_path(reservation)  %></td>  -->
+    <th></th>
+    <tr> 
+    <% end  %>      
+    </table>
+

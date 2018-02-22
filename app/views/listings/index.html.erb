@@ -7,38 +7,26 @@
 
 
 <%= form_tag listings_path, method: :get do %>
-  <%= number_field_tag :guests %>
+  <!-- <#%= number_field_tag :guests %> -->
   <%= text_field_tag :location, params[:location] %>
   <%= submit_tag "Search", name: nil %>
 <% end %>
 
+<div class="d-flex flex-wrap">
+    <% @listings.each do |listing| %>
+  <div class="card" style="width: 20rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to listing.title ,listing_path(listing) %></h5>
+      <p class="card-text"><%= listing.description %></p>
+      <p class="card-text"><%= listing.location %></p>
+      <p class="card-text"><%= listing.property_type %></p>
+      <p class="card-text"><%= listing.price %></p>
+    </div>
+  </div>
 
- 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Location</th>
-    <th>Type</th>
-    <th>Price</th>
-    <th></th>
-  </tr>
- 
-<% @listings.each do |listing| %>
-  <tr>
-    <td><%= link_to listing.title ,listing_path(listing) %></td>
-    <td></td>
-    <td><%= listing.location %></td>
-    <td></td>
-    <td><%= listing.property_type %></td>
-    <td></td>
-    <td><%= listing.price %></td>
-    <td></td>
-    <!-- <td><#%= link_to "View", listing %></td> -->
-    
-  </tr>
+
 <% end %>
-</table>
 
 
-
-
+<%= paginate @listings %>

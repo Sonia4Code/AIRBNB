@@ -39,9 +39,8 @@ asdfad
   <div><%= f.label :check_out %></div>
   <div><%= f.date_field :check_out %></div>
 
-  <div><%= f.label :total_amount %></div>
-  <div><%= f.number_field :total_price %></div>
- 
+  <div><td><%= @reservation.total_price %></td></div>
+  
 
   <div><%= f.submit %></div>
    <% end %>

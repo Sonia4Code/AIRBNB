@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   get "listings/search"
   
+  get "listings/verify"
+  
   resources :listings do
     resources :reservations
   end
 
-  resources :users, controller: "clearance/users", only: [:create] do
+  resources :users, controller: "users", only: [:create, :show] do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
@@ -25,6 +27,8 @@ Rails.application.routes.draw do
   
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+
+  get "/users/reservations" => "reservations#user_index", as: "user_reservations"
 
 
   

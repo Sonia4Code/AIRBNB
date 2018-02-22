@@ -1,5 +1,8 @@
+
+
 <table>
-  <tr>
+    <tr>
+    <th></th>
     <th>Title</th>
     <th>Description</th>
     <th>Location</th>
@@ -8,27 +11,25 @@
     <th>Guests</th>
     <th>Price</th>
     <th>Amenities</th>
-    <th></th>
-  </tr>
- 
+    </tr>
+    <tr>
 
-  <tr>
-    <td><%= @listing.title %></td>
-    <td></td>
-    <td><%= @listing.description %></td>
-    <td></td>
-    <td><%= @listing.location %></td>
-    <td></td>
-    <td><%= @listing.property_type %></td>
-    <td></td>    
-    <td><%= @listing.living_space %></td>
-    <td></td>
-    <td><%= @listing.guests %></td>
-    <td></td>
-    <td><%= @listing.price %></td>
-    <td></td>
-    <td><%= @listing.amenities %></td>
-   
-  </tr>
+        <% i = 0 %>
+    <% while i <= (@listing.avatars.length - 1) do  %> 
+   <td><%=image_tag @listing.avatars[i].small.url %> </td>  
+      <% i = i + 1 %>
+      <% end %>  
 
+
+
+    <td><%= @listing.title %></td>    
+    <td><%= @listing.description %></td>    
+    <td><%= @listing.location %></td>    
+    <td><%= @listing.property_type %></td>       
+    <td><%= @listing.living_space %></td>   
+    <td><%= @listing.guests %></td>    
+    <td><%= @listing.price %></td>   
+    <td><%= @listing.amenities %></td>  
+    
+    <tr> 
 </table>

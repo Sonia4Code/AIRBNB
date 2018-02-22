@@ -11,7 +11,6 @@
 
 <%= link_to "Edit", edit_listing_path(@listing) %>
 
-<%= link_to 'Delete', listing_path(@listing),
-            :confirm => 'Are you sure?', :method => :delete %>
+<%= button_to "delete", @listing, :method => "delete" %>
 
-
+<!-- <#%= link_to "Delete", listing_path(@listing), method: :delete %> -->

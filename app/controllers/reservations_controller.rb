@@ -2,12 +2,14 @@ class ReservationsController < ApplicationController
 
 
   def index
-    @reservations = Reservation.all
-
-    
-    # filtering_params(params).each do |key, value|
+        # @reservation.user_id = current_user.id
+        @listings = current_user.listings
       
-    #    @listings = @listings.public_send(key, value) if value.present?
+
+  end
+
+  def user_inde
+    @reservation = current_user.reservations
   end
 
   def new
@@ -19,7 +21,9 @@ class ReservationsController < ApplicationController
 
   def create
     @listing = Listing.find(params[:listing_id])
-    @reservation = @listing.reservations.new(reservation_params)
+
+      @reservation = @listing.reservations.new(reservation_params)#.merge(user_id: current_user.id)
+      @reservation.user_id = current_user.id
     if @reservation.save
       redirect_to listing_reservation_path(@listing, @reservation)
     end

@@ -3,8 +3,14 @@ class User < ApplicationRecord
   include Clearance::User
 
 
-
   has_many :authentications, dependent: :destroy
+  has_one :avatar
+  has_many :listings
+  has_many :reservations
+
+  mount_uploader :avatar, AvatarUploader
+ 
+  # enum roles:  { customer: 0, moderator: 1, superadmin: 2 }
 
  def self.create_with_auth_and_hash(authentication, auth_hash)
    user = self.create!(
@@ -21,5 +27,7 @@ class User < ApplicationRecord
    x = self.authentications.find_by(provider: 'facebook')
    return x.token unless x.nil?
  end
+
+ 
 end
 
