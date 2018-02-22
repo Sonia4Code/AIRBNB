@@ -70,7 +70,7 @@ end
 
 	def listing_params
  		params.require(:listing).permit(:id, :role, :location, :property_type, :price, 
- 			:title, :description, :guests, :living_space, :page, :avatar,  amenities: [])
+ 			:title, :description, :guests, :living_space, :page, {avatars: []}, amenities: [])
  	end
 
  	def filtering_params(params)

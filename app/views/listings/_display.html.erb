@@ -13,8 +13,16 @@
     <th>Amenities</th>
     </tr>
     <tr>
-   <td><%= image_tag @listing.avatar.small.url if @listing.avatar? %> </td>  
-   <td><%= @listing.title %></td>    
+
+        <% i = 0 %>
+    <% while i <= (@listing.avatars.length - 1) do  %> 
+   <td><%=image_tag @listing.avatars[i].small.url %> </td>  
+      <% i = i + 1 %>
+      <% end %>  
+
+
+
+    <td><%= @listing.title %></td>    
     <td><%= @listing.description %></td>    
     <td><%= @listing.location %></td>    
     <td><%= @listing.property_type %></td>       

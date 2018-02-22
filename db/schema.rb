@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222023134) do
+ActiveRecord::Schema.define(version: 20180222103121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180222023134) do
     t.text     "amenities",     default: [],              array: true
     t.text     "schedule"
     t.boolean  "verification"
-    t.string   "avatar"
+    t.json     "avatars"
   end
 
   create_table "reservations", force: :cascade do |t|

@@ -13,7 +13,9 @@ class Listing < ApplicationRecord
 
    scope :location, -> (location) { where("location ILIKE ?", "%#{location}%") }
 
-   mount_uploader :avatar, AvatarUploader
+   # Images
+   mount_uploaders :avatars, AvatarUploader
+   serialize :avatars, JSON
 
 end
 
