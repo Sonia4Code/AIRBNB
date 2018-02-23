@@ -33,6 +33,8 @@ Congrats, your reservation is successful
 
 </table>
 
+<%= link_to "Make Payment", payment_new_path %>
+
 <%= link_to "Edit", edit_listing_reservation_path(@reservation) %>
 
 <%= button_to "delete", listing_reservation_path(@reservation), :confirm => 'Are you sure?', :method => "delete" %>

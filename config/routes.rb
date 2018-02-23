@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payment/new'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -30,8 +32,9 @@ Rails.application.routes.draw do
 
   get "/users/reservations" => "reservations#user_index", as: "user_reservations"
 
-
   
+  get 'payment/new'
 
+  post 'payment/checkout'
 
 end
