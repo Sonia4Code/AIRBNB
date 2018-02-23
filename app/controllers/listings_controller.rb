@@ -56,9 +56,8 @@ end
 	 end
   	
   	def search
-	  
-	  @listing = Listing.where("location LIKE ? ", "%#{params[:location]}%")  
-
+	  @listings = Listing.where("location ILIKE ? ", "%#{params[:location]}%")  
+      flash[:message] = "Here are your listings"
 	   render template:"listings/search"
 	end
 

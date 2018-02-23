@@ -21,7 +21,6 @@ class ReservationsController < ApplicationController
 
   def create
     @listing = Listing.find(params[:listing_id])
-
       @reservation = @listing.reservations.new(reservation_params)#.merge(user_id: current_user.id)
       @reservation.user_id = current_user.id
     if @reservation.save

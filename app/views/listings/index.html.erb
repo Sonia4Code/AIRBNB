@@ -6,7 +6,7 @@
 <h1>Listings</h1>
 
 
-<%= form_tag listings_path, method: :get do %>
+<%= form_tag listings_search_path, method: :get do %>
   <!-- <#%= number_field_tag :guests %> -->
   <%= text_field_tag :location, params[:location] %>
   <%= submit_tag "Search", name: nil %>
@@ -15,7 +15,7 @@
 <div class="d-flex flex-wrap">
     <% @listings.each do |listing| %>
   <div class="card" style="width: 20rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
+    <%=image_tag listing.avatars[0].small.url, class: "card-img-top", alt:"Card image cap" unless listing.avatars.empty? %>
     <div class="card-body">
       <h5 class="card-title"><%= link_to listing.title ,listing_path(listing) %></h5>
       <p class="card-text"><%= listing.description %></p>
