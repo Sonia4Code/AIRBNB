@@ -1,8 +1,3 @@
-<h1>hello <%= @user.name %> </h1>
-
-
-<!-- <h3>your reservation at someone else's place </h3> -->
-
 <h2>My Properties </h2>
 
 <h3>Reservations: </h3>
@@ -17,18 +12,23 @@
     <th></th>
     </tr>
 
-<% @listings.each do |l| %>
-  <tr> 
-  <th><%= l.location %></th>
-   <th></th>
-  <th><%= l.reservations.check_in if !l.reservations.empty? %></th>
-  <th></th>
-  <th><%= l.reservations.check_out if !l.reservations.empty? %></th> 
-  <th></th>
-  <tr> 
-  <% end  %>      
-  </table>
 
+<% i= 0 %>
+<% while i < @listings.length %> 
+  <%= @listings[i].location %> 
+  <% @listings[i].reservations.each do |r| %>
+    <%= r.check_in %> 
+    <%= r.check_out %> 
+  <% end %> 
+<% i = i + 1 %> 
+<% end %> 
+<!-- 
+<%# @listings.each do |l| %>
+    <%#= @l.reservations.each do |r| %> 
+    <%#= @r.check_in if !@r.check_in.nil? %> 
+    <%#= @r.check_out if !@r.check_out.nil? %> 
+    <%# end %>  
+<%# end %>   -->
 
 <br>
 <br>
