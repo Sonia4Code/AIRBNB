@@ -4,7 +4,7 @@ class ReservationMailer < ApplicationMailer
   default from: "sonia4code@gmail.com"
 
   def booking_email(customer, host, reservation_id)
-    byebug 
+   
       @customer = customer
       @host = host 
       @reservation_id = reservation_id 

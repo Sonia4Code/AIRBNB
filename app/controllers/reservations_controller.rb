@@ -25,8 +25,8 @@ class ReservationsController < ApplicationController
       @reservation.user_id = current_user.id
     if @reservation.save
       redirect_to listing_reservation_path(@listing, @reservation)
-      host = User.find(@listing.user_id)
-      byebug
+      host = User.find(@listing.user_id)      
+      # ReservationJob.perform_later(current_user, host, @reservation_id)
       ReservationMailer.booking_email(current_user, host, @reservation.id).deliver_later
     end
   end
