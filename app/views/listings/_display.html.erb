@@ -1,4 +1,4 @@
-
+<div class ="#{flash[:sucess]}">    
 
 <table>
     <tr>
@@ -14,12 +14,11 @@
     </tr>
     <tr>
 
-        <% i = 0 %>
-    <% while i <= (@listing.avatars.length - 1) do  %> 
-   <td><%=image_tag @listing.avatars[i].small.url %> </td>  
+      <% i = 0 %>
+      <% while i <= (@listing.avatars.length - 1) do  %> 
+      <td><%=image_tag @listing.avatars[i].small.url %> </td>  
       <% i = i + 1 %>
       <% end %>  
-
 
 
     <td><%= @listing.title %></td>    

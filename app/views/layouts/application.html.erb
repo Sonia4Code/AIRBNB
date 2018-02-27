@@ -23,33 +23,36 @@
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <% if !current_user.nil? %> 
-  <a href=<%= user_path(current_user) %>> Your Profile </a>
-  <% end %> 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="http://localhost:3000">Airbnb</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" 
+          <% if !current_user.nil? %> 
+           href=<%= user_path(current_user) %>> Your Profile </a>
+        <% end %>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= listings_path%>">Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Log In</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Sign_in
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Sign_up</a>
+          <a class="dropdown-item" href="#">Facebook sign_in</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Sign_out</a>
         </div>
       </li>
       <li class="nav-item">
@@ -62,6 +65,10 @@
     </form>
   </div>
 </nav>
+
+
+
+<!-- Sign in Path and Flash message -->
  
   <div id="header">
     <% if signed_in? -%>
@@ -72,15 +79,14 @@
   </div>
 
 
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
-  </div>
 
+  <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+            <%= value %>
+      </div>
+<% end %>
 
-  <%= link_to "Listings", listings_path %>
-  <%= link_to "My Reservations", user_reservations_path(current_user) %>
+  
 
 
 

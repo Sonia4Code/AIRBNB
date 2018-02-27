@@ -49,18 +49,22 @@ gem 'omniauth-facebook'
 # Bootstrap
 gem 'bootstrap', '~> 4.0.0'
 
-gem 'jquery-rails'
-
 gem 'faker'
 
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 gem 'carrierwave', '~> 1.0'
 
 gem "mini_magick"
 
+gem 'fog-aws'
+
 gem 'braintree'
 
+gem "letter_opener", :group => :development
+
+gem 'mail'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

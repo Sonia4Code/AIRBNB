@@ -10,13 +10,13 @@ class ListingsController < ApplicationController
       
 	end
 
- 	
+
  	def create
- 		@listing = Listing.new(listing_params)
- 			if @listing.save
+ 		 @listing = Listing.new(listing_params)
+     @listing.user_id = current_user.id
+     if @listing.save
         flash[:notice] = "You have successfully created a listing!"
- 				redirect_to @listing
-   
+ 				redirect_to @listing   
       else
         flash[:notice] = "You have failed to created a listing!"
         redirect_to new_listing_path(@listing)

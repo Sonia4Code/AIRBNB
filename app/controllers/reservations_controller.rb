@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
 
   end
 
-  def user_inde
+  def user_index
     @reservation = current_user.reservations
   end
 
@@ -25,6 +25,9 @@ class ReservationsController < ApplicationController
       @reservation.user_id = current_user.id
     if @reservation.save
       redirect_to listing_reservation_path(@listing, @reservation)
+      host = User.find(@listing.user_id)
+      byebug
+      ReservationMailer.booking_email(current_user, host, @reservation.id).deliver_later
     end
   end
 
