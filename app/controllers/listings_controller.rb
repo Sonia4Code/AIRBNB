@@ -56,10 +56,17 @@ end
 	 end
   	
   	def search
-	  @listings = Listing.where("location ILIKE ? ", "%#{params[:location]}%")  
-      flash[:message] = "Here are your listings"
-	   render template:"listings/search"
-	end
+      @listings =Listing.all
+      filtering_params(params).each do |key,value|
+        @listings = @listings.public_send(key,value) if value.present?
+      end
+    end
+
+	  # @listings = Listing.where("location ILIKE ? ", "%#{params[:location]}%")  
+   #    flash[:message] = "Here are your listings"
+	  #  render template:"listings/search"
+    # end
+	
 
 
 	private
@@ -73,7 +80,7 @@ end
  	end
 
  	def filtering_params(params)
- 		params.slice(:guests, :location, :property_type, :created_at)
+ 		params.slice(:country, :location, :property_type, :price, :bedrooms, :bathrooms, amenities: [])
  	end
 
 end

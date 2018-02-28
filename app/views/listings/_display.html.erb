@@ -14,11 +14,11 @@
     </tr>
     <tr>
 
-      <% i = 0 %>
+      <td><% i = 0 %>
       <% while i <= (@listing.avatars.length - 1) do  %> 
-      <td><%=image_tag @listing.avatars[i].small.url %> </td>  
+      <%=image_tag @listing.avatars[i].small.url %> 
       <% i = i + 1 %>
-      <% end %>  
+      <% end %> </td>   
 
 
     <td><%= @listing.title %></td>    
