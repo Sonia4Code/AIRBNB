@@ -3,7 +3,7 @@ class Listing < ApplicationRecord
    has_many :reservations
    has_many :photos
 
-   paginates_per 9
+   paginates_per 8
    
    scope :created_at, -> (created_at) { where created_at: guests}
 

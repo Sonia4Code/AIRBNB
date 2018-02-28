@@ -83,4 +83,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  heroku config:set REDIS_PROVIDER=REDISTOGO_URL
 end
