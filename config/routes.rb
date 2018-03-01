@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resource :session, controller: "clearance/sessions", only: [:create]
 
   get "listings/search"
+
+  # post "search", to: "listing#search"
   
   get "listings/verify"
   

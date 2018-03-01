@@ -1,7 +1,9 @@
 
 <!-- FORM FOR EDIT AND NEW -->
 
-
+  <div><%= f.label :price %></div>
+  <div><%= f.text_field :price %></div>
+  
   <div><%= f.label :title %></div>
   <div><%= f.text_field :title %></div>
    
@@ -26,8 +28,13 @@
   <div><%= f.label :living_space %></div>
   <div><%= f.select :living_space, options_for_select([["select one", ""], "Entire Place", "Private Room", "Shared Room"])%></div>
 
-  <div><%= f.label :price %></div>
-  <div><%= f.text_field :price %></div>
+  
+
+  <div><%= f.label :bedrooms %></div>
+  <div><%= f.select :bedrooms, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
+
+  <div><%= f.label :bathrooms %></div>
+  <div><%= f.select :bathrooms, options_for_select([["select one", ""], 1,2,3,4,5,6,7,8,9,10])%></div>
 
   <div><%= f.label :amenities %></div>  
   <div>AC</div>

@@ -3,7 +3,7 @@ class Listing < ApplicationRecord
    has_many :reservations
    has_many :photos
 
-   paginates_per 8
+   paginates_per 9
    
    # scope :created_at, -> (created_at) { where created_at: guests}
 
@@ -14,7 +14,19 @@ class Listing < ApplicationRecord
    scope :bathrooms, -> (bathrooms) { where bathrooms: bathrooms}
    scope :bedrooms, -> (bedrooms) { where bedrooms: bedrooms}
 
-   # scope :price, -> (price) { where ("price <= ?", "%#{price}%")}
+
+
+   # def self.bedroom(aaa)
+   #    where(bedroom: aaa)
+   # end 
+   # scope :minimum, -> (price) { where("price <= ?", "%#{price}%")}
+   # def self.minimum(price)
+   #    where(price: price < min)
+   # end 
+
+   # scope :haha, 
+
+   # scope :maximum, -> (price) { where("price => ?", "%#{price}%")}
    
    
 
