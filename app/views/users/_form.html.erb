@@ -1,10 +1,29 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+    </div>
+    <div class="col-md-auto">
+      <div class="text-field">
+        <strong><%= form.label :name %></strong>
+        </br>
+        <%= form.text_field :name %>
+      </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
 
+      <div class="text-field">
+        <strong><%= form.label :email %></strong>
+      </br>
+        <%= form.text_field :email, type: 'email' %>
+      </div>
+
+      <div class="password-field">
+        <strong><%= form.label :password %></strong>
+        </br>
+        <%= form.password_field :password %>
+      </div>
+      </div>
+    <div class="col col-lg-2">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">

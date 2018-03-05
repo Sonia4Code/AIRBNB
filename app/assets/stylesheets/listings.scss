@@ -1,20 +1,12 @@
-// Place all the styles related to the listings controller here.
+/*// Place all the styles related to the listings controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com/*/
 
-@import "listings"
 
-html, body {
-  height:100%;
-}
-body {
-  display:flex;
-  align-items:center;
+.listing-card {
+  width: 25%;
 }
 
-
-.card {
-  width: 25rem; 
-  height: 27rem;
-  border: solid, black;
-  }
+.stretch {
+  align-self: stretch;
+}

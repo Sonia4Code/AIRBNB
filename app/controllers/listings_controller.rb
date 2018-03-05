@@ -6,8 +6,7 @@ class ListingsController < ApplicationController
   		filtering_params(params).each do |key, value|
   	  @listings = @listings.public_send(key, value) if value.present?
   	end
-    @listings = Listing.page(params[:page])  
-      
+    @listings = Listing.order(created_at: :desc).page(params[:page])        
 	end
 
 
@@ -54,14 +53,27 @@ end
 	    @listing.destroy
      redirect_to "/listings"
 	 end
+
+  #  def search
+  #   location = Listing.search_locations(params["query"])
+  #   render json: locations
+  # end
   	
   	def search
-	  @listings = Listing.where("location ILIKE ? ", "%#{params[:location]}%")  
-      flash[:message] = "Here are your listings"
-	   render template:"listings/search"
-	end
+      @listings =Listing.all
+      filtering_params(params).each do |key,value|
+        @listings = @listings.public_send(key,value) if value.present? 
+        if @listings.empty?
+        flash[:notice] = "Sorry there are no matching results for your search!"
+        end 
+      end
+    end
 
 
+	  # @listings = Listing.where("location ILIKE ? ", "%#{params[:location]}%")  
+   #    flash[:message] = "Here are your listings"
+	  #  render template:"listings/search"
+    # end
 	private
 
   # def set_listing
@@ -69,25 +81,14 @@ end
 
 	def listing_params
  		params.require(:listing).permit(:id, :role, :location, :property_type, :price, 
- 			:title, :description, :guests, :living_space, :page, {avatars: []}, amenities: [])
+ 			:title, :description, :guests, :living_space, :page,:bedrooms, :bathrooms,:country, {avatars: []}, amenities: [])
  	end
 
  	def filtering_params(params)
- 		params.slice(:guests, :location, :property_type, :created_at)
+ 		params.slice(:country, :location, :property_type, 
+      :price, :bedrooms, :bathrooms, amenities: [])
  	end
 
-end
+ end
 
 
- 
-
-
-
-  # def verify
- #      @user = user.find(params[:id])
- # #      # authorization code
- #      if user.role == "customer" || "superadmin"
- #        flash[:notice] = "Sorry. You are not allowed to perform this action."
- #        return redirect_to some_other_url, notice: "Sorry. You do not have the permissino to verify a property."
- #      end
- #    end

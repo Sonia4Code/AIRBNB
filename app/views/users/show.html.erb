@@ -12,23 +12,17 @@
     <th></th>
     </tr>
 
-
+<tr>
 <% i= 0 %>
 <% while i < @listings.length %> 
-  <%= @listings[i].location %> 
-  <% @listings[i].reservations.each do |r| %>
-    <%= r.check_in %> 
-    <%= r.check_out %> 
+    <th><%= @listings[i].location %> </th>
+    <% @listings[i].reservations.each do |r| %>
+    <th><%= r.check_in %> </th>
+    <th><%= r.check_out %> </th>
   <% end %> 
 <% i = i + 1 %> 
 <% end %> 
-<!-- 
-<%# @listings.each do |l| %>
-    <%#= @l.reservations.each do |r| %> 
-    <%#= @r.check_in if !@r.check_in.nil? %> 
-    <%#= @r.check_out if !@r.check_out.nil? %> 
-    <%# end %>  
-<%# end %>   -->
+<tr>
 
 <br>
 <br>

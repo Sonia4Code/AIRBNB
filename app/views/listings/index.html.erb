@@ -5,36 +5,73 @@
 <h1>Listings</h1>
 
 
-<div class="d-flex align-items-center">
-<%= form_tag listings_search_path, method: :get do %>
-  <%= number_field_tag :guests %>
-  <%= text_field_tag :location, params[:location] %>
+<!-- <div class="d-flex align-items-center"> -->
+<%= form_tag listings_search_path, method: :get do %> 
+  
+  <h7>Country </h7>
+    <%= text_field_tag :country, params[:country] %>
+  
+  <h7>City </h7>
+    <%= text_field_tag :location, params[:location] %>
+  
+  <h7>Property Type</h7>
+    <%= select_tag "property_type", options_for_select(["", "House", "Apartment", "Loft", "Guesthouse", "Bungalow", "Hostel", "Townhouse", "Villa", "Bed and Breakfast", "Cabin"], "property_type") %> 
+    <h7>Living Space</h7>
+    <%= select_tag "living_space", options_for_select(["", "Entire Place", "Private Room", "Shared Room"], "living_space") %> 
+  <h7>Bedrooms</h7>
+    <%= select_tag "bedrooms", options_for_select(["", 1,2,3,4,5,6,7,8,9,10], "bedrooms") %> 
+  <h7>Bathrooms</h7>
+    <%= select_tag "bathrooms", options_for_select(["", 1,2,3,4,5,6,7,8,9,10], "bathrooms") %>
+  <br /> 
+  <h7>Price upto</h7>
+     <%= text_field_tag :price, params[:price] %> -
+    <%#= text_field :max_price, :price%>
+
+    <br />
+    <br />
+
+   
   <%= submit_tag "Search", name: nil %>
 <% end %>
-</div>
+<!-- </div> -->
 
 <br>
 
-<div class="d-flex align-items-center">
-  <div class ="card-columns">
+<div class="d-flex align-items-center align-content-stretch flex-wrap">
+<!-- <div class="d-flex align-items-center"> -->
     <% @listings.each do |listing| %>
-    <div class="col-6">
-  <div class="card" style="width: 25rem; height: 27rem">
-    <div><%=image_tag listing.avatars[0].small.url, class: "card-img-top", alt:"Card image cap" unless listing.avatars.empty? %></div>
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to listing.title ,listing_path(listing) %></h5>
-      <p class="card-text"><%= listing.description %></p>
-      <p class="card-text"><%= listing.location %></p>
-      <p class="card-text"><%= listing.property_type %></p>
-      <p class="card-text"><%= listing.price %></p>
+  <!-- <div class="card" style="width: 25rem; height: 27rem"> -->
+    <div class="card listing-card stretch" >
+      <%=image_tag listing.avatars[0].small.url, class: "card-img-top", alt:"Card image cap" unless listing.avatars.empty? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to listing.title ,listing_path(listing) %></h5>
+        <!-- <p class="card-text"><= listing.description %></p> -->
+        <p class="card-text"><%= listing.location %></p>
+        <p class="card-text"><%= listing.property_type %></p>
+        <p class="card-text"><%= listing.price %></p>
+      </div>
     </div>
-  </div>
-</div>
 <% end %>
-</div>
 </div>
 
 
 
 <div id = "pages"><%= paginate @listings %></div>
 
+
+
+
+
+<!-- <div class="d-flex align-items-center"> -->
+<%#= form_tag listings_search_path, method: :get do %>
+  
+  <%#= text_field_tag :country, params[:country] %>
+  <%#= text_field_tag :location, params[:location] %>
+  <%#= text_field_tag :property_type, params[:property_type] %>
+  <%#= number_field_tag :bedrooms %>
+  <%#= number_field_tag :bathrooms %>
+  <%#= text_field_tag :price, params[:price] %>
+  
+  <%#= submit_tag "Search", name: nil %>
+<%# end %>
+<!-- </div> -->

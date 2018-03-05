@@ -1,34 +1,37 @@
 <div class ="#{flash[:sucess]}">    
+   <!--  <p><strong><h8>Title</h8></strong>
+      <br>
+      <%= @listing.title %></p>    
+    <p> -->
+      <!-- <strong><h8>Description: </h8></strong> -->
+      
+      <%= @listing.description %></p>    
+      <p>      
+      <!-- <strong><h8>City</h8></strong> -->
+      <%= @listing.location %></p>    
+      <p>
+      <!-- <strong><h8>Type</h8></strong> -->      
+      <%= @listing.property_type %></p>       
+      <p>
+      <!-- <strong><h8>Living Space</h8></strong> -->      
+      <%= @listing.living_space %></p>   
+     <p>
+      <!-- <strong><h8>Guests</h8>      </strong> -->      
+      <%= @listing.guests %></p>    
+    <!-- <p><strong><h8>Price</h8></strong> -->      
+      <%= @listing.price %></p>   
+      <p>
+      <!-- <strong><h8>Amenities</h8></strong> -->        
+    <%= @listing.amenities * "," %></p>  
+    </div>
 
-<table>
-    <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Location</th>
-    <th>Type</th>
-    <th>Living Space</th>
-    <th>Guests</th>
-    <th>Price</th>
-    <th>Amenities</th>
-    </tr>
-    <tr>
-
-      <% i = 0 %>
-      <% while i <= (@listing.avatars.length - 1) do  %> 
-      <td><%=image_tag @listing.avatars[i].small.url %> </td>  
-      <% i = i + 1 %>
-      <% end %>  
-
-
-    <td><%= @listing.title %></td>    
-    <td><%= @listing.description %></td>    
-    <td><%= @listing.location %></td>    
-    <td><%= @listing.property_type %></td>       
-    <td><%= @listing.living_space %></td>   
-    <td><%= @listing.guests %></td>    
-    <td><%= @listing.price %></td>   
-    <td><%= @listing.amenities %></td>  
-    
-    <tr> 
-</table>
+    <!-- <%# @listing.amenities.each do |x| %>
+        <p><%#= x %></p>
+      <%# end %>  -->
+    <!-- 
+      <p><%# i = 0 %> -->
+      <%# while i <= (@listing.avatars.lengh8 - 1) do  %> 
+      <%#=image_tag @listing.avatars[i].small.url %> 
+      <%# i = i + 1 %> 
+      <%# end %> 
+     <!-- </p>  -->
