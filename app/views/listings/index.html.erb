@@ -5,46 +5,28 @@
 <h1>Listings</h1>
 
 
-<!-- <div id="home">
-  <h2>Search For Cities Using AJAX</h2>
-  <div id="search-div">
-    <%= form_tag listings_search_path do %>
-      <%= label_tag "search" %>
-      <%= text_field_tag "search", nil, list: "list" %>
-      <datalist id="list"></datalist>
-    <% end %>
-  </div>
-</div>
- -->
-
-
-
-
-
 <!-- <div class="d-flex align-items-center"> -->
 <%= form_tag listings_search_path, method: :get do %> 
-  <%#= f.label :keywords %><br />    
-  <!-- Country  -->
-    <%#= text_field_tag :country, params[:country] %>
-  <!-- <br /> -->
-  City 
+  
+  <h7>Country </h7>
+    <%= text_field_tag :country, params[:country] %>
+  
+  <h7>City </h7>
     <%= text_field_tag :location, params[:location] %>
   
-  Property Type
+  <h7>Property Type</h7>
     <%= select_tag "property_type", options_for_select(["", "House", "Apartment", "Loft", "Guesthouse", "Bungalow", "Hostel", "Townhouse", "Villa", "Bed and Breakfast", "Cabin"], "property_type") %> 
-  Bedrooms
+    <h7>Living Space</h7>
+    <%= select_tag "living_space", options_for_select(["", "Entire Place", "Private Room", "Shared Room"], "living_space") %> 
+  <h7>Bedrooms</h7>
     <%= select_tag "bedrooms", options_for_select(["", 1,2,3,4,5,6,7,8,9,10], "bedrooms") %> 
-  Bathrooms
+  <h7>Bathrooms</h7>
     <%= select_tag "bathrooms", options_for_select(["", 1,2,3,4,5,6,7,8,9,10], "bathrooms") %>
   <br /> 
-  Price Range
-  <br />
-    Min:<%= text_field :minimum_price, :price%> 
-    Max:<%= text_field :maximum_price, :price%>
+  <h7>Price upto</h7>
+     <%= text_field_tag :price, params[:price] %> -
+    <%#= text_field :max_price, :price%>
 
-     <%#= label :min_price, "Price Range" %>
-    <!-- Min: <%#= text_field :total_price, size: 10 %> - -->
-    <!-- Max: <%#= text_field :total_price, size: 10 %> -->
     <br />
     <br />
 
@@ -55,23 +37,21 @@
 
 <br>
 
-<div class="d-flex align-items-center">
-  <div class ="card-columns">
+<div class="d-flex align-items-center align-content-stretch flex-wrap">
+<!-- <div class="d-flex align-items-center"> -->
     <% @listings.each do |listing| %>
-    <div >
-  <div class="card" style="width: 25rem; height: 27rem">
-    <div id = "picdex"><%=image_tag listing.avatars[0].small.url, class: "card-img-top", alt:"Card image cap" unless listing.avatars.empty? %></div>
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to listing.title ,listing_path(listing) %></h5>
-      <!-- <p class="card-text"><= listing.description %></p> -->
-      <p class="card-text"><%= listing.location %></p>
-      <p class="card-text"><%= listing.property_type %></p>
-      <p class="card-text"><%= listing.price %></p>
+  <!-- <div class="card" style="width: 25rem; height: 27rem"> -->
+    <div class="card listing-card stretch" >
+      <%=image_tag listing.avatars[0].small.url, class: "card-img-top", alt:"Card image cap" unless listing.avatars.empty? %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to listing.title ,listing_path(listing) %></h5>
+        <!-- <p class="card-text"><= listing.description %></p> -->
+        <p class="card-text"><%= listing.location %></p>
+        <p class="card-text"><%= listing.property_type %></p>
+        <p class="card-text"><%= listing.price %></p>
+      </div>
     </div>
-  </div>
-</div>
 <% end %>
-</div>
 </div>
 
 
@@ -83,15 +63,15 @@
 
 
 <!-- <div class="d-flex align-items-center"> -->
-<%= form_tag listings_search_path, method: :get do %>
+<%#= form_tag listings_search_path, method: :get do %>
   
-  <%= text_field_tag :country, params[:country] %>
-  <%= text_field_tag :location, params[:location] %>
-  <%= text_field_tag :property_type, params[:property_type] %>
-  <%= number_field_tag :bedrooms %>
-  <%= number_field_tag :bathrooms %>
-  <%= text_field_tag :price, params[:price] %>
+  <%#= text_field_tag :country, params[:country] %>
+  <%#= text_field_tag :location, params[:location] %>
+  <%#= text_field_tag :property_type, params[:property_type] %>
+  <%#= number_field_tag :bedrooms %>
+  <%#= number_field_tag :bathrooms %>
+  <%#= text_field_tag :price, params[:price] %>
   
-  <%= submit_tag "Search", name: nil %>
-<% end %>
-</div>
+  <%#= submit_tag "Search", name: nil %>
+<%# end %>
+<!-- </div> -->
